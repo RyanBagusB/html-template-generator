@@ -1,0 +1,27 @@
+{
+  "name": "html-template-generator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate:jwt": "node src/lib/generate-jwt-secret.js",
+    "seed": "node prisma/seed.js",
+    "migrate:deploy": "prisma migrate deploy && npm run seed",
+    "reset:db": "npx prisma migrate reset --force"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "bcrypt": "^5.1.1",
+    "next": "15.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "prisma": "^6.7.0",
+    "tailwindcss": "^4"
+  }
+}
