@@ -5,28 +5,28 @@ const prisma = new PrismaClient();
 
 async function main() {
   const hashedAdminPassword = await bcrypt.hash('12345678', 10);
-  const hashedNormalPassword = await bcrypt.hash('12345678', 10);
+  const hashedUserPassword = await bcrypt.hash('12345678', 10);
 
-  const adminUser = await prisma.user.create({
+  const admin = await prisma.user.create({
     data: {
-      username: 'adminuser',
+      username: 'admin',
       name: 'Administrator',
       password: hashedAdminPassword,
       role: 'ADMIN',
     },
   });
 
-  const normalUser = await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
-      username: 'normaluser',
+      username: 'user',
       name: 'Normal User',
-      password: hashedNormalPassword,
+      password: hashedUserPassword,
       role: 'USER',
     },
   });
 
-  console.log('Admin user created:', adminUser);
-  console.log('Normal user created:', normalUser);
+  console.log('Admin user created:', admin);
+  console.log('Normal user created:', user);
 }
 
 main()
